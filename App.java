@@ -73,7 +73,12 @@ public class App {
  * */
 
     System.out.println("Agenda de contactos");
-    System.out.println("Elija una opcion");
+    System.out.println("Elija una opcion:");
+    System.out.println("1-Insertar nuevo contacto");
+    System.out.println("2-Eliminar un contacto");
+    System.out.println("3-Modifica un contacto");
+    System.out.println("4-Buscar un contacto");
+    System.out.println("5-Salir");
     Integer option = Integer.parseInt(System.console().readLine());
     switch (option) {
         case 1:
@@ -81,8 +86,11 @@ public class App {
             String name = System.console().readLine();
             System.out.println("Ingrese el numero del contacto");
             Integer number = Integer.parseInt(System.console().readLine());
-            agendaContactos.put(name, number);
-            break;
+            if(number.toString().length() <= 11) {
+               agendaContactos.put(name, number);
+               break;
+            }
+            else { System.out.println("El numero introducido es demasiado largo");}
         case 2:
             System.out.println("Ingrese el nombre del contacto a eliminar");
             String name2 = System.console().readLine();
@@ -95,9 +103,13 @@ public class App {
             Integer number2 = Integer.parseInt(System.console().readLine());
             agendaContactos.put(name3, number2);
             break;
-            
-    
-        default:
+        case 4:
+            System.out.println("Ingrese el nombre del contacto a buscar");
+            String name4 = System.console().readLine();
+            System.out.println(agendaContactos.get(name4));
+            break;
+        case 5:
+            System.out.println("Hasta pronto!");
             break;
     }
 
